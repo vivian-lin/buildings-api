@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -89,9 +88,6 @@ public class BuildingsControllerTest {
         assertThat(result.getPrimaryType().getId()).isEqualTo(4);
         assertThat(result.getPrimaryType().getName()).isEqualTo("Data Center");
         assertThat(result.getTotalSize()).isEqualTo(13000L);
-        assertThat(result.getSiteUses()).hasSize(4);
-        assertThat(result.getSiteUses().stream().map(SiteUses::getId).collect(Collectors.toList()))
-                .containsExactlyInAnyOrder(1, 2, 3, 4);
     }
 
     @Test

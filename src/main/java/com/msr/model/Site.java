@@ -1,13 +1,7 @@
 package com.msr.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -44,10 +38,6 @@ public class Site {
     private String state;
 
     private String zipcode;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "site_id")
-    private List<SiteUses> siteUses;
 
     @JsonProperty("total_size")
     @Formula("SELECT SUM(su.size_sqft) FROM site_uses su WHERE su.site_id = id")
