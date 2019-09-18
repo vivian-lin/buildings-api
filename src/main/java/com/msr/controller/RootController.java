@@ -1,4 +1,4 @@
-package com.msr;
+package com.msr.controller;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.log4j.Log4j2;

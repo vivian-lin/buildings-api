@@ -1,18 +1,18 @@
 package com.msr.data;
 
-import com.msr.model.Site;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import java.util.List;
 
-/**
- * Repository functionality for Site
- *
- * @author Measurabl
- * @since 2019-06-06
- */
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
+
+import com.msr.model.Site;
+
 public interface SiteRepository extends PagingAndSortingRepository<Site, Integer> {
+
+    @Query("SELECT s FROM Site s JOIN SiteUses su ON su.siteId = s.id JOIN UseTypes ut ON ut.id = su.useTypeId WHERE ut.id = :useTypeId")
+    List<Site> findAllByUseTypeId(@Param("useTypeId") int useTypeId);
+
 }
 
-////////////////////////////////////////////////////////////
-// Copyright 2018  Measurabl, Inc. All rights reserved.
-////////////////////////////////////////////////////////////
-    
+// Copyright 2018 Measurabl, Inc. All rights reserved.
